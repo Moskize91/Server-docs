@@ -186,7 +186,7 @@ SDK Token
 
 {% api-method-body-parameters %}
 {% api-method-parameter name="isBan" type="boolean" required=true %}
-设置 true 标示封禁，设置 false 标示取消封禁
+设置 true 表示封禁，设置 false 表示取消封禁
 {% endapi-method-parameter %}
 {% endapi-method-body-parameters %}
 {% endapi-method-request %}
