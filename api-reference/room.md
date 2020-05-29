@@ -6,7 +6,7 @@
 {% endapi-method-summary %}
 
 {% api-method-description %}
-​
+
 {% endapi-method-description %}
 
 {% api-method-spec %}
@@ -172,6 +172,12 @@ SDK Token
 
 {% api-method-spec %}
 {% api-method-request %}
+{% api-method-path-parameters %}
+{% api-method-parameter name="uuid" type="string" required=true %}
+房间的 UUID
+{% endapi-method-parameter %}
+{% endapi-method-path-parameters %}
+
 {% api-method-headers %}
 {% api-method-parameter name="token" type="string" required=false %}
 SDK Token
