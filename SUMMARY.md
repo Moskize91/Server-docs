@@ -10,4 +10,7 @@
 
 * [房间](api-reference/room.md)
 * [生成 Token](api-reference/generate-token.md)
+* [截图](api-reference/screenshot.md)
+* [场景](api-reference/scene.md)
+* [文档转换](api-reference/docucment-convertion.md)
 
