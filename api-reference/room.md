@@ -73,7 +73,7 @@
 
 {% api-method-headers %}
 {% api-method-parameter name="token" type="string" required=true %}
-SDK Token
+SDK Token 或 Room Token（只读以上）
 {% endapi-method-parameter %}
 {% endapi-method-headers %}
 {% endapi-method-request %}
@@ -180,7 +180,7 @@ SDK Token
 
 {% api-method-headers %}
 {% api-method-parameter name="token" type="string" required=false %}
-SDK Token
+SDK Token、Room Token（admin 以上）
 {% endapi-method-parameter %}
 {% endapi-method-headers %}
 
@@ -192,7 +192,7 @@ SDK Token
 {% endapi-method-request %}
 
 {% api-method-response %}
-{% api-method-response-example httpCode=200 %}
+{% api-method-response-example httpCode=201 %}
 {% api-method-response-example-description %}
 
 {% endapi-method-response-example-description %}
