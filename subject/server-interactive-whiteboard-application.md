@@ -2,18 +2,49 @@
 
 ## 基本模式
 
-互动白板客户端是怎么会是，怎么和服务端通讯，要干嘛
+接入 White SDK 并开发一个完整的实时互动白板，你不但需要开发客户端（前端） App，还需要开发一个服务端应用。这个服务端应用，除了承载其他业务之外，还需要管理房间，以及为客户端（前端）App 分发用于健全的 Token。
 
-\[泳道图\]
+一个完整的实时互动白板应用包括客户端（前端）和后端两个部分。两端彼此配合以实现创建房间、分发 Token、加入房间、参与互动。
 
-## 不写服务端应用可以吗？
+![&#x521B;&#x5EFA;&#x623F;&#x95F4;&#x5E76;&#x52A0;&#x5165;&#x623F;&#x95F4;&#xFF08;&#x6CF3;&#x9053;&#x56FE;&#xFF09;](../.gitbook/assets/server-graphics-1.png)
 
-不可以，主要是无法处理 SDK Token 泄漏问题，还有权限管理问题
+![&#x52A0;&#x5165;&#x5DF2;&#x5B58;&#x5728;&#x7684;&#x623F;&#x95F4;&#xFF08;&#x6CF3;&#x9053;&#x56FE;&#xFF09;](../.gitbook/assets/server-graphics-2.png)
 
 ## 权限管理
 
-两种方法：
+Netless 实时互动白板通过 Room Token 管理权限。你可以通过 Netless 提供的服务端 API 为特定房间生成不同**角色**的 Room Token。Netless 提供的角色，权限从低到高分别为 reader、writer、admin。低级别角色能做的事，高级别角色也能做，但反过来不成立。
 
-* 通过业务服务端代理，把健全做到业务层
-* 分发不同级别的 token
+#### reader 角色
+
+* 仅仅能通过客户端（前端）的 White SDK 以只读模式加入房间。
+* 可以通过 [Netless 服务端 API](https://developer.netless.group/server/api-reference/room#huo-qu-fang-jian-xin-xi) 获取该房间信息。
+* 可以通过 [Netless 服务端 API](https://developer.netless.group/server/api-reference/room#huo-qu-fang-jian-xin-xi) 获取房间内的场景信息。
+
+#### writer 角色
+
+* 可以通过客户端（前端）的 White SDK 以可写或只读模式加入房间。 
+* 可以通过 [Netless 服务端 API](https://developer.netless.group/server/api-reference/scene#cha-ru-xin-chang-jing) 在房间中插入新场景。
+* 可以通过 [Netless 服务端 API](https://developer.netless.group/server/api-reference/scene#chang-jing-tiao-zhuan) 在房间中切换场景。
+
+#### admin 角色
+
+* 可以通过 [Netless 服务端 API](https://developer.netless.group/server/api-reference/room#feng-jin-fang-jian) 封禁该房间。
+
+特别的，服务端 API 中，SDK Token 可以当作任意房间的 admin 角色的 Room Token 使用。
+
+你需要根据 Netless 提供的 Room Token 机制，结合业务的用户系统和权限管理，设计你自己的业务逻辑。
+
+## 不写服务端应用可以吗？
+
+虽然你可以通过把 SDK Token 写到客户端（前端），并通过前端调用 Netless 服务端 API 以实现完整的业务流程。**但是，我们非常不推荐你这么做**。
+
+如果你决定不写服务端应用，这么以来会有两个明显的问题。
+
+#### SDK Token 泄漏
+
+任何基于 Netless 服务端 API 的操作都要由 SDK Token 发起。SDK Token 是公司和团队的重要资产，如果被客户端（前端）持有，别人可以通过反编译、抓包等途径来窃取 SDK Token。SDK Token 一旦泄漏，会带来严重的安全问题。
+
+#### 业务逻辑层面的权限管理
+
+Netless 云端不知道你的用户系统，也不直到你的鉴权逻辑。你的用户系统的权限管理需要一个载体，这个载体便是业务服务器。业务服务器需要把你自己设计的健全逻辑翻译成 Netless 能立即的 Room Token。
 
