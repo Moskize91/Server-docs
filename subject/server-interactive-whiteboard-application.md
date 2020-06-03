@@ -17,18 +17,18 @@ Netless 实时互动白板通过 Room Token 管理权限。你可以通过 Netle
 #### reader 角色
 
 * 仅仅能通过客户端（前端）的 White SDK 以只读模式加入房间。
-* 可以通过 [Netless 服务端 API](https://developer.netless.group/server/api-reference/room#huo-qu-fang-jian-xin-xi) 获取该房间信息。
-* 可以通过 [Netless 服务端 API](https://developer.netless.group/server/api-reference/room#huo-qu-fang-jian-xin-xi) 获取房间内的场景信息。
+* 可以通过 [Netless 服务端 API](https://developer.netless.link/server/api-reference/room#huo-qu-fang-jian-xin-xi) 获取该房间信息。
+* 可以通过 [Netless 服务端 API](https://developer.netless.link/server/api-reference/room#huo-qu-fang-jian-xin-xi) 获取房间内的场景信息。
 
 #### writer 角色
 
-* 可以通过客户端（前端）的 White SDK 以可写或只读模式加入房间。 
-* 可以通过 [Netless 服务端 API](https://developer.netless.group/server/api-reference/scene#cha-ru-xin-chang-jing) 在房间中插入新场景。
-* 可以通过 [Netless 服务端 API](https://developer.netless.group/server/api-reference/scene#chang-jing-tiao-zhuan) 在房间中切换场景。
+* 可以通过客户端（前端）的 White SDK 以可写或只读模式加入房间。
+* 可以通过 [Netless 服务端 API](https://developer.netless.link/server/api-reference/scene#cha-ru-xin-chang-jing) 在房间中插入新场景。
+* 可以通过 [Netless 服务端 API](https://developer.netless.link/server/api-reference/scene#chang-jing-tiao-zhuan) 在房间中切换场景。
 
 #### admin 角色
 
-* 可以通过 [Netless 服务端 API](https://developer.netless.group/server/api-reference/room#feng-jin-fang-jian) 封禁该房间。
+* 可以通过 [Netless 服务端 API](https://developer.netless.link/server/api-reference/room#feng-jin-fang-jian) 封禁该房间。
 
 特别的，服务端 API 中，SDK Token 可以当作任意房间的 admin 角色的 Room Token 使用。
 
